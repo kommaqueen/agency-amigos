@@ -1,0 +1,7 @@
+<h2>Book <%= @celebrity.name %></h2>
+
+<%= simple_form_for [@celebrity, @booking] do |f| %>
+  <%= f.input :starts_on, as: :date, start_year: Date.today.year, order: [:month, :day, :year], start_month: Date.today.month, end_year: Date.today.year + 2 %>
+  <%= f.input :ends_on, as: :date, order: [:month, :day, :year], start_year: Date.today.year, end_year: Date.today.year + 2 %>
+  <%= f.submit %>
+<% end %>
