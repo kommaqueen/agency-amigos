@@ -1,0 +1,12 @@
+<h1><%= @celebrity.name %>'s Booking Page</h1>
+
+<div class="container">
+  <ul>
+    <li>$<%= @celebrity.daily_rate %></li>
+    <li><%= @celebrity.category %></li>
+    <li><%= @celebrity.description %></li>
+    <li><%= @celebrity.rating %></li>
+  </ul>
+</div>
+
+<%= link_to "All Celebrities", celebrities_path %>

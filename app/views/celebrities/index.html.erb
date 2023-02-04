@@ -1,0 +1,15 @@
+<h1>celebz</h1>
+
+<% if @celebrities.empty? %>
+<p>No celebz yet</p>
+<% else %>
+<% @celebrities.each do |celebrity| %>
+<ul>
+  <li><%= link_to celebrity.name, celebrity_path(celebrity) %></li>
+  <li>$<%= celebrity.daily_rate %></li>
+  <li><%= celebrity.category %></li>
+  <li><%= celebrity.description %></li>
+  <li><%= celebrity.rating %></li>
+</ul>
+<% end %>
+<% end %>
