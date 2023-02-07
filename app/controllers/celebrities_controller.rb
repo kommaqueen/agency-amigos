@@ -1,6 +1,6 @@
 class CelebritiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_celebrity, only: [:show, :edit]
+  before_action :set_celebrity, only: [:show, :edit, :update, :destroy]
 
   def index
     @celebrities = Celebrity.all
@@ -24,7 +24,16 @@ class CelebritiesController < ApplicationController
   end
 
   def edit
+  end
 
+  def update
+    @celebrity.update(celebrity_params)
+    redirect_to celebrity_path(@celebrity)
+  end
+
+  def destroy
+    @celebrity.destroy
+    redirect_to celebrities_path, status: :see_other
   end
 
   private

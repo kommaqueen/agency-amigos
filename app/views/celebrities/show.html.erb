@@ -14,4 +14,10 @@
 
 <%= link_to "Book #{@celebrity.name}", new_celebrity_booking_path(@celebrity) %>
 
+
+<% if @celebrity.user == current_user %>
+  <%= link_to "Edit", edit_celebrity_path %>
+  <%= link_to "Delete", celebrity_path(@celebrity), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+<% end%>
+
 <%= link_to "All Celebrities", celebrities_path %>

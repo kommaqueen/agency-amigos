@@ -1,10 +1,10 @@
 <%= simple_form_for(@celebrity) do |f| %>
-    <%= f.input :name %>
-    <%= f.input :category, collection: ["film", "music", "sports", "politics", "influencer" ] %>
-    <%= f.input :description %>
-    <%= f.input :daily_rate %>
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-    <%= f.submit %>
-  <% end %>
+  <%= f.input :name %>
+  <%= f.input :category, collection: ["film", "music", "sports", "politics", "influencer" ] %>
+  <%= f.input :description %>
+  <%= f.input :daily_rate %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>
 
 <%= link_to "All Celebs", celebrities_path %>

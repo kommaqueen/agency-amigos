@@ -1,1 +1,11 @@
-<h1>Edit </h1>
+<h1>Edit <%= @celebrity.name %> </h1>
+
+<p>Change the parts of the profile that need changing</p>
+<%= simple_form_for(@celebrity) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :category, collection: ["film", "music", "sports", "politics", "influencer" ] %>
+  <%= f.input :description %>
+  <%= f.input :daily_rate %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>
