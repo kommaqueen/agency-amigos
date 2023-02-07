@@ -1,6 +1,6 @@
 class CelebritiesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_celebrity, only: [:show]
+  before_action :set_celebrity, only: [:show, :edit]
 
   def index
     @celebrities = Celebrity.all
@@ -23,6 +23,10 @@ class CelebritiesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
   private
 
   def set_celebrity
@@ -30,6 +34,6 @@ class CelebritiesController < ApplicationController
   end
 
   def celebrity_params
-    params.require(:celebrity).permit(:name, :category, :description, :daily_rate)
+    params.require(:celebrity).permit(:name, :category, :description, :daily_rate, photos: [])
   end
 end
