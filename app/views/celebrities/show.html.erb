@@ -7,7 +7,7 @@
     <li><%= @celebrity.description %></li>
     <li><%= @celebrity.rating %></li>
     <% @celebrity.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :cloud_name => :cloudinary %>
     <% end %>
   </ul>
 </div>
