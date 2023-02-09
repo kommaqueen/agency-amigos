@@ -226,5 +226,4 @@ beto = Celebrity.new(
 beto.user = user4
 beto.save!
 
-# Finished!
 puts "Done!"
