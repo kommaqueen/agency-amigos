@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     # For additional in app/views/devise/registrations/edit.html.erb
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :age])
   end
+
+  # For redirect user to the celebrities path after logged in.
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || celebrities_path
+  end
+
 end
