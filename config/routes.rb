@@ -8,5 +8,8 @@ Rails.application.routes.draw do
 
   resources :celebrities do
     resources :bookings, only: [:new, :create, :show]
+    resources :reviews, except: [:destroy, :edit, :update]
   end
+
+  resources :reviews, only: [:destroy]
 end
