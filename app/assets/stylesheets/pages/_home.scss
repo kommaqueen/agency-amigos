@@ -1,4 +1,11 @@
 // Specific CSS for your home-page
-.homepage-card-sexy {
-  color: pink;
+.stretched-link {
+  text-decoration: none;
+  color: black;
+}
+
+.subtitle-rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
