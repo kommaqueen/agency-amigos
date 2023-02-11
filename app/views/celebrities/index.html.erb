@@ -6,6 +6,9 @@
 <% @celebrities.each do |celebrity| %>
 <ul>
   <li><%= link_to celebrity.name, celebrity_path(celebrity) %></li>
+  <% unless celebrity.avg_rating.nil? %>
+  <li>Average Rating <%= celebrity.avg_rating %></li>
+  <% end %>
   <li>$<%= celebrity.daily_rate %></li>
   <li><%= celebrity.category %></li>
   <li><%= celebrity.description %></li>

@@ -2,10 +2,10 @@
 
 <div class="container">
   <ul>
-    <li>$<%= @celebrity.daily_rate %></li>
+    <li><%= render "celebrity_rating"  %></li>
     <li><%= @celebrity.category %></li>
     <li><%= @celebrity.description %></li>
-    <li><%= @celebrity.rating %></li>
+    <li>$<%= @celebrity.daily_rate %></li>
     <% @celebrity.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
@@ -14,6 +14,15 @@
 
 <%= link_to "Book #{@celebrity.name}", new_celebrity_booking_path(@celebrity) %>
 
+<%= link_to "Read Reviews", celebrity_reviews_path(@celebrity) %>
+
+<%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
+<%# go through all instances of the celebrity bookings %>
+<% @celebrity.bookings.all.find do |booking|  %>
+  <% if booking.user == current_user %>
+  <%= link_to "Leave a Review", new_celebrity_review_path(@celebrity)  %>
+  <% end %>
+<% end %>
 
 <% if @celebrity.user == current_user %>
   <%= link_to "Edit", edit_celebrity_path %>

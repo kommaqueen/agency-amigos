@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <h2>Leave your review for <%= @celebrity.name %> </h2>
+      <%= simple_form_for [@celebrity, @review] do |f| %>
+        <%= f.input :rating, collection: (1..5).to_a, label: "How was it with this celebrity?", input_html: {data: {controller: "star-rating"}} %>
+        <%= f.input :content %>
+        <%= f.submit "Send your review" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to "Back to Profile", celebrity_path(@celebrity) %>
