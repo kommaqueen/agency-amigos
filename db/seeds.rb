@@ -11,12 +11,12 @@ require 'open-uri'
 
 
 def cloudinary_seed(celebrity)
-  response = Cloudinary::Search.expression("folder=celebrities")
-                              .execute["resources"].sample
+  response = Cloudinary::Search.expression("folder=celebrities").execute["resources"].sample
   celebrity.photos.attach(
     io: URI.open(response["url"]),
     filename: response["filename"],
-    content_type: "image/#{response['format']}")
+    content_type: "image/#{response['format']}"
+  )
 end
 
 puts "Deleting all old celebz and users"
