@@ -7,6 +7,20 @@
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-lewagon .navbar-brand {
   width: 40px;
+  font-family: 'Oleo Script', cursive;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.dropdown-menu {
+  border-radius: 5px;
+  background-color: rgb(218, 218, 218);
+}
+
+.nav-link {
+  font-size: 16px;
 }
