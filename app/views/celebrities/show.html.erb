@@ -2,7 +2,9 @@
 
 <div class="container">
   <ul>
+    <% unless @celebrity.avg_rating.nil? %>
     <li><%= render "celebrity_rating"  %></li>
+    <% end %>
     <li><%= @celebrity.category %></li>
     <li><%= @celebrity.description %></li>
     <li>$<%= @celebrity.daily_rate %></li>
