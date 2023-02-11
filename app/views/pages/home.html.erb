@@ -1,4 +1,4 @@
-
+<div class="container">
 <h1>Pages#home</h1>
 <% if user_signed_in? %>
   <h2>Hi <%= current_user.email %></h2>
@@ -8,3 +8,4 @@
 <%= render "homepage_cards" %>
 
 <%= link_to "View all celebrities", celebrities_path %>
+</div>

@@ -1,1 +1,16 @@
-<h3 class="homepage-card-sexy">Yoooo testing</h3>
+<div class="row">
+  <% @celebrities.sample(3).each do |celebrity| %>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card" style="width: 400;">
+        <%= image_tag "Leonardo_Dicaprio.jpeg", class: 'card-img-top', alt: 'Leonardo Dicaprio' %>
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to celebrity.name, celebrity_path(celebrity), class: 'stretched-link' %></h5>
+          <div class="subtitle-rate">
+            <h6 class="card-subtitle mb-2 text-muted"><%= celebrity.category.capitalize %></h6>
+            <h6 class="card-subtitle">$<%= celebrity.daily_rate %></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
