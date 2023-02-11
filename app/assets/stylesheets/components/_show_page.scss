@@ -5,6 +5,21 @@
 }
 
 .celebrity-title {
-  margin-bottom: none;
+  margin-bottom: 0;
   flex-grow: 1;
+}
+
+.celeb-pricing {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.grow {
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.btn .btn-success {
+  width: 40px;
 }
