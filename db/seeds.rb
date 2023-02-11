@@ -5,17 +5,25 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "json"
+require "rest-client"
+require 'open-uri'
 
-def cloudinary_seed(user)
-  i = 0
-  20.times do
-    cloudinary = Cloudinary::Search.expression('folder=celebrities').execute["resources"][i]
-    user.photo.attach(
-  end
+
+def cloudinary_seed(celebrity)
+  response = Cloudinary::Search.expression("folder=celebrities")
+                              .execute["resources"].sample
+  celebrity.photos.attach(
+    io: URI.open(response["url"]),
+    filename: response["filename"],
+    content_type: "image/#{response['format']}")
 end
 
-puts "Deleting all old celebz"
+puts "Deleting all old celebz and users"
 Celebrity.destroy_all
+User.destroy_all
+Booking.destroy_all
+
 
 # User 1
 user1 = User.create!(
@@ -192,8 +200,8 @@ charlie = Celebrity.new(
   description: "Charles III is unfortunaelty King of the United Kingdom and the 14 other Commonwealth realms. He was the longest-serving heir apparent and Prince of Wales and, at age 73, became the oldest person to accede to the British throne, finally upon the death of his mother, Elizabeth II, on 8 September 2022."
 )
 cloudinary_seed(charlie)
-charles.user = user3
-charles.save!
+charlie.user = user3
+charlie.save!
 
 # User 4
 user4 = User.create!(

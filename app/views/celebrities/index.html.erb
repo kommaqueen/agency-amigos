@@ -11,7 +11,7 @@
   <li><%= celebrity.description %></li>
   <li><%= celebrity.rating %></li>
   <% unless celebrity.photos.empty? %>
-  <li><%= cl_image_tag celebrity.photos.first.key, height: 300, width: 400, crop: :fill, :cloud_name => :cloudinary %></li>
+  <li><%= cl_image_tag celebrity.photos.first.key, height: 300, width: 400, crop: :fill %></li>
   <% end%>
 </ul>
 <% end %>
