@@ -1,20 +1,43 @@
-<h1><%= @celebrity.name %>'s Booking Page</h1>
+
 
 <div class="container">
-  <ul>
-    <% unless @celebrity.avg_rating.nil? %>
-    <li><%= render "celebrity_rating"  %></li>
-    <% end %>
-    <li><%= @celebrity.category %></li>
-    <li><%= @celebrity.description %></li>
-    <li>$<%= @celebrity.daily_rate %></li>
-    <% @celebrity.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-  </ul>
+  <div class="row">
+    <div class="col-6 d-flex justify-content-start">
+      <% @celebrity.photos.each do |photo| %>
+       <%= cl_image_tag photo.key, height: 400, width: 400, crop: :fill %>
+      <% end %>
+    </div>
+    <div class="col-6 p-3">
+      <div class="row d-flex justify-content-start p-3 ">
+        <div class="celeb-name">
+          <h1 class="celebrity-title"><%= @celebrity.name %> </h1>
+          <% unless @celebrity.avg_rating.nil? %>
+            <%= render "celebrity_rating"  %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row d-flex p-3 ">
+        <div class="celeb-info">
+          Category: <%= @celebrity.category.capitalize %>
+          <br>
+          <%= @celebrity.description %>
+        </div>
+      </div>
+      <div class="row p-3">
+        <div class="celeb-pricing">
+          <%= @celebrity.daily_rate %> EUR
+          <br>
+          <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-success" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
 </div>
 
-<%= link_to "Book #{@celebrity.name}", new_celebrity_booking_path(@celebrity) %>
 
 <%= link_to "Read Reviews", celebrity_reviews_path(@celebrity) %>
 
