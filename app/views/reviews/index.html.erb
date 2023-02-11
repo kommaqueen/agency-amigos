@@ -1,0 +1,16 @@
+<h1>These are the reviews for <%= @celebrity.name %></h1>
+
+<% if @celebrity.reviews.empty? %>
+<h2> No Reviews</h2>
+<% else %>
+<% @celebrity.reviews.each do |r| %>
+  <p><%= r.content %></p>
+  <p><%= r.rating %></p>
+    <% r.rating.times do %>
+  <%# iterate over times rating for fontawesome %>
+    <i class="fa-solid fa-star"></i>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to "All Celebrities", celebrities_path %>

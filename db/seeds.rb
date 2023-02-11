@@ -262,8 +262,5 @@ cloudinary_seed(beto)
 beto.user = user4
 beto.save!
 
-
-
-
 # Finished!
 puts "Done!"
