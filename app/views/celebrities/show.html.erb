@@ -2,10 +2,10 @@
 
 <div class="container">
   <ul>
-    <li>$<%= @celebrity.daily_rate %></li>
+    <li><%= render "celebrity_rating"  %></li>
     <li><%= @celebrity.category %></li>
     <li><%= @celebrity.description %></li>
-    <li><%= @celebrity.rating %></li>
+    <li>$<%= @celebrity.daily_rate %></li>
     <% @celebrity.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>

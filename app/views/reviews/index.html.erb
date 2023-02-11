@@ -1,9 +1,9 @@
 <h1>These are the reviews for <%= @celebrity.name %></h1>
 
-<% if @reviews.empty? %>
+<% if @celebrity.reviews.empty? %>
 <h2> No Reviews</h2>
 <% else %>
-<% @reviews.each do |r| %>
+<% @celebrity.reviews.each do |r| %>
   <p><%= r.content %></p>
   <p><%= r.rating %></p>
     <% r.rating.times do %>

@@ -1,0 +1,9 @@
+<%= @celebrity.avg_rating %>
+<% unless @celebrity.avg_rating.nil? %>
+  <% @celebrity.avg_rating.floor.times do %>
+    <i class="fa-solid fa-star"></i>
+  <% end %>
+  <% unless @celebrity.avg_rating.floor == @celebrity.avg_rating %>
+  <i class="fa-solid fa-star-half-stroke"></i>
+  <% end %>
+<% end %>
