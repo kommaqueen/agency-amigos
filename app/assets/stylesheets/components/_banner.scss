@@ -1,28 +1,31 @@
 .banner {
-  background-color: rgb(147, 147, 147);
+  background-color: $faded-black;
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
+  padding: 150px 0 120px 0;
   text-align: center;
 }
 
 .banner h1 {
   margin: 0;
-  color: white;
+  color: $beige;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+  padding-bottom: 12px;
 }
 
 .btn-flat {
-  color: white;
+  color: $beige;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #670BFF;
+  background: $faded-black;
   transition: background 0.3s ease;
+  border: $beige 1px solid;
 }
 
 .btn-flat:hover {
-  background: #4D04C4;
-  color: white;
+  background: white;
+  color: $faded-black;
+  border: $beige 1px solid;
 }
