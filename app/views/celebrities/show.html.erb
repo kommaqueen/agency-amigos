@@ -41,22 +41,47 @@
         </div>
       </div>
 
-      <div class="row p-3">
-      <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
-      <%# go through all instances of the celebrity bookings %>
-        <div class="rating">
-          <% @celebrity.bookings.all.find do |booking|  %>
-            <% if booking.user == current_user %>
-             <%= link_to "Leave a Review", new_celebrity_review_path(@celebrity), class: "btn btn-primary"  %>
-            <% end %>
-          <% end %>
-        </div>
+
+
       </div>
     </div>
   </div>
+</div>
 
+<div class="container my-3">
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h2>All Reviews</h2>
+      <% if @celebrity.reviews.empty? %>
+        <h2> No Reviews</h2>
+        <% else %>
+        <% @celebrity.reviews.each do |r| %>
+          <p><%= r.content %></p>
+          <p><%= r.rating %></p>
+          <% r.rating.times do %>
+            <%# iterate over times rating for fontawesome %>
+            <i class="fa-solid fa-star"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
 
+  <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
+  <%# go through all instances of the celebrity bookings %>
 
+    <div class="card col-12 col-lg-6 p-3">
+      <h2>Leave your review</h2>
+      <% @celebrity.bookings.all.find do |booking|  %>
+        <% if booking.user == current_user %>
+          <%= simple_form_for [@celebrity, @review] do |f| %>
+            <%= f.input :content %>
+            <%= f.input :rating, collection: (1..5).to_a, label: "How was it with this celebrity?", input_html: {data: {controller: "star-rating"}} %>
+            <%= f.submit "Send your review" %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
   <%# Check the routes to add the reviews in the show page. %>
