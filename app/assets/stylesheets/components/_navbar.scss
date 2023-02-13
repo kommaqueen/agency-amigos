@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $beige;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,6 +10,8 @@
 .navbar-lewagon .navbar-brand {
   width: 40px;
   font-family: 'Oleo Script', cursive;
+  color: white;
+  letter-spacing: 1.2px;
 }
 
 .dropdown-toggle::after {
