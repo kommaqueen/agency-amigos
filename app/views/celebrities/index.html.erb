@@ -1,104 +1,121 @@
 <div class="container">
-  <h1>Book a day with one of our special guests!</h1>
+  <div class="index-header">
+    <h1 class="text-center">So who's it gonna be? <br> Choose from one of our...</h1>
+  </div>
 
   <% if @celebrities.empty? %>
   <p>No celebz yet</p>
   <% else %>
 
-  <h2 class="category-header">Predatory Film Stars</h2>
-  <div class="cards">
-    <% filmcelebs = @celebrities.select { |celeb| celeb.category == "film" } %>
-    <% filmcelebs.each do |celebrity| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
-      <div class="card-top">
-        <%= link_to celebrity.name, celebrity_path(celebrity) %>
-      </div>
-      <div class="card-bottom">
-        <% unless celebrity.avg_rating.nil? %>
-        <p>Average Rating <%= celebrity.avg_rating %></p>
+  <div class="card-collections">
+
+    <div class="card-collection">
+      <h2 class="category-header">Predatory Film Stars</h2>
+      <div class="cards">
+        <% filmcelebs = @celebrities.select { |celeb| celeb.category == "film" } %>
+        <% filmcelebs.each do |celebrity| %>
+        <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
+          <div class="blur"></div>
+          <div class="ribbon beige">$<%= celebrity.daily_rate %>/day</div>
+          <div class="card-top">
+            <%= link_to celebrity.name, celebrity_path(celebrity) %>
+          </div>
+          <div class="card-bottom">
+            <% unless celebrity.avg_rating.nil? %>
+              <% celebrity.avg_rating.floor.times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+              <% unless celebrity.avg_rating.floor == celebrity.avg_rating %>
+              <i class="fa-solid fa-star-half-stroke"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-        <p>$<%= celebrity.daily_rate %></p>
       </div>
     </div>
-    <% end %>
-  </div>
 
-  <h2 class="category-header">Corrupt Politicians</h2>
-
-  <div class="cards">
-    <% politicscelebs = @celebrities.select { |celeb| celeb.category == "politics" } %>
-    <% politicscelebs.each do |celebrity| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
-      <div class="card-top">
-        <%= link_to celebrity.name, celebrity_path(celebrity) %>
-      </div>
-      <div class="card-bottom">
-        <% unless celebrity.avg_rating.nil? %>
-        <p>Average Rating <%= celebrity.avg_rating %></p>
+    <div class="card-collection">
+      <h2 class="category-header">Corrupt Politicians</h2>
+      <div class="cards">
+        <% politicscelebs = @celebrities.select { |celeb| celeb.category == "politics" } %>
+        <% politicscelebs.each do |celebrity| %>
+        <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
+          <div class="blur"></div>
+          <div class="ribbon beige">$<%= celebrity.daily_rate %>/day</div>
+          <div class="card-top">
+            <%= link_to celebrity.name, celebrity_path(celebrity) %>
+          </div>
+          <div class="card-bottom">
+            <% unless celebrity.avg_rating.nil? %>
+            <p>Average Rating <%= celebrity.avg_rating %></p>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-        <p>$<%= celebrity.daily_rate %></p>
       </div>
     </div>
-    <% end %>
-  </div>
 
-  <h2 class="category-header">Overpaid Athletes</h2>
-
-  <div class="cards">
-    <% sportscelebs = @celebrities.select { |celeb| celeb.category == "sports" } %>
-    <% sportscelebs.each do |celebrity| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
-      <div class="card-top">
-        <%= link_to celebrity.name, celebrity_path(celebrity) %>
-      </div>
-      <div class="card-bottom">
-        <% unless celebrity.avg_rating.nil? %>
-        <p>Average Rating <%= celebrity.avg_rating %></p>
+    <div class="card-collection">
+      <h2 class="category-header">Overpaid Athletes</h2>
+      <div class="cards">
+        <% sportscelebs = @celebrities.select { |celeb| celeb.category == "sports" } %>
+        <% sportscelebs.each do |celebrity| %>
+        <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
+          <div class="blur"></div>
+          <div class="ribbon beige">$<%= celebrity.daily_rate %>/day</div>
+          <div class="card-top">
+            <%= link_to celebrity.name, celebrity_path(celebrity) %>
+          </div>
+          <div class="card-bottom">
+            <% unless celebrity.avg_rating.nil? %>
+            <p>Average Rating <%= celebrity.avg_rating %></p>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-        <p>$<%= celebrity.daily_rate %></p>
       </div>
     </div>
-    <% end %>
-  </div>
 
-  <h2 class="category-header">Whiny Musicians</h2>
-
-  <div class="cards">
-    <% musiccelebs = @celebrities.select { |celeb| celeb.category == "music" } %>
-    <% musiccelebs.each do |celebrity| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
-      <div class="card-top">
-        <%= link_to celebrity.name, celebrity_path(celebrity) %>
-      </div>
-      <div class="card-bottom">
-        <% unless celebrity.avg_rating.nil? %>
-        <p>Average Rating <%= celebrity.avg_rating %></p>
+    <div class="card-collection">
+      <h2 class="category-header">Whiny Musicians</h2>
+      <div class="cards">
+        <% musiccelebs = @celebrities.select { |celeb| celeb.category == "music" } %>
+        <% musiccelebs.each do |celebrity| %>
+        <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
+          <div class="blur"></div>
+          <div class="ribbon beige">$<%= celebrity.daily_rate %>/day</div>
+          <div class="card-top">
+            <%= link_to celebrity.name, celebrity_path(celebrity) %>
+          </div>
+          <div class="card-bottom">
+          </div>
+        </div>
         <% end %>
-        <p>$<%= celebrity.daily_rate %></p>
       </div>
     </div>
-    <% end %>
-  </div>
 
-
-  <h2 class="category-header">Priviledged "Influencers"</h2>
-
-  <div class="cards">
-    <% influencercelebs = @celebrities.select { |celeb| celeb.category == "influencer" } %>
-    <% influencercelebs.each do |celebrity| %>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
-      <div class="card-top">
-        <%= link_to celebrity.name, celebrity_path(celebrity) %>
-      </div>
-      <div class="card-bottom">
-        <% unless celebrity.avg_rating.nil? %>
-        <p>Average Rating <%= celebrity.avg_rating %></p>
+    <div class="card-collection">
+      <h2 class="category-header">Privileged "Influencers"</h2>
+      <div class="cards">
+        <% influencercelebs = @celebrities.select { |celeb| celeb.category == "influencer" } %>
+        <% influencercelebs.each do |celebrity| %>
+        <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celebrity.photos.first.key, height: 300, crop: :fill %>')">
+          <div class="blur"></div>
+          <div class="ribbon beige">$<%= celebrity.daily_rate %>/day</div>
+          <div class="card-top">
+            <%= link_to celebrity.name, celebrity_path(celebrity) %>
+          </div>
+          <div class="card-bottom">
+            <% unless celebrity.avg_rating.nil? %>
+            <p>Average Rating <%= celebrity.avg_rating %></p>
+            <% end %>
+          </div>
+        </div>
         <% end %>
-        <p>$<%= celebrity.daily_rate %></p>
       </div>
     </div>
-    <% end %>
-  </div>
 
+  </div>
   <% end %>
 </div>
