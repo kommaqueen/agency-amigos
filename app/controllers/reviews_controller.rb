@@ -14,6 +14,12 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to celebrity_path, status: :see_other
+  end
+
   private
 
   def set_celebrity
