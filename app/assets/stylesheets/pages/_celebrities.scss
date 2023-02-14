@@ -2,6 +2,10 @@
   padding: 2em 0;
 }
 
+.index-header-searchbar > form .btn-flat {
+  margin-left: 5px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
