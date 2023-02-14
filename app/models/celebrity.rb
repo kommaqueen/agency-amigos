@@ -6,7 +6,12 @@ class Celebrity < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true
   # must add add celebrity user story validations
-
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_category,
+  against: [ :name, :category ],
+  using: {
+    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+  }
   # avg rating for their star display
   def avg_rating
     # map puts all ratings into an array
