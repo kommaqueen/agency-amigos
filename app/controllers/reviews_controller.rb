@@ -1,14 +1,6 @@
 class ReviewsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
-  before_action :set_celebrity, only: [:index, :new, :create]
-
-  def index
-    @reviews = Review.all
-  end
-
-  def new
-    @review = Review.new
-  end
+  before_action :set_celebrity, only: [:create]
 
   def create
     @review = Review.new(review_params)
@@ -17,9 +9,17 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to celebrity_reviews_path
     else
+      render "celebrities/show", status: :unprocessable_entity
       flash[:alert] = "Something went wrong."
-      render :new
     end
+  end
+
+
+
+  def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
+    redirect_to celebrity_path, status: :see_other
   end
 
   private

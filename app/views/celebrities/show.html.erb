@@ -2,17 +2,17 @@
 
 <div class="container p-3">
   <div class="row">
-    <div class="col-6 d-flex justify-content-start">
+    <div class="col-12 col-lg-6 d-flex justify-content-start">
       <% @celebrity.photos.each do |photo| %>
        <%= cl_image_tag photo.key, height: 400, width: 400, crop: :fill %>
       <% end %>
     </div>
-    <div class="col-6 p-3 card rounded-4">
+    <div class="col-6 p-3 card-celeb rounded-4 text-white ">
       <div class="row d-flex justify-content-start p-3 ">
         <div class="celeb-name">
-          <h1 class="celebrity-title"><%= @celebrity.name %> </h1>
+          <h2 class="celebrity-title category-show text-white"><%= @celebrity.name %> </h2>
           <% unless @celebrity.avg_rating.nil? %>
-            <%= render "celebrity_rating"  %>
+            <%= render "celebrities/celebrity_rating"  %>
           <% end %>
         </div>
       </div>
@@ -37,29 +37,61 @@
         <div class="celeb-pricing">
           <p class="grow"><strong><%= @celebrity.daily_rate %></strong> EUR</p>
           <br>
-          <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-success" %>
+          <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-flat mt-2 btn-xl" %>
         </div>
       </div>
-
-      <div class="row p-3">
-      <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
-      <%# go through all instances of the celebrity bookings %>
-        <div class="rating">
-          <% @celebrity.bookings.all.find do |booking|  %>
-            <% if booking.user == current_user %>
-             <%= link_to "Leave a Review", new_celebrity_review_path(@celebrity), class: "btn btn-primary"  %>
-            <% end %>
-          <% end %>
-        </div>
       </div>
     </div>
   </div>
-
-
-
 </div>
 
-  <%# Check the routes to add the reviews in the show page. %>
-<%= link_to "Read Reviews", celebrity_reviews_path(@celebrity) %>
+<hr class="container">
 
-<%= link_to "All Celebrities", celebrities_path %>
+<div class="container my-3">
+  <div class="row">
+    <h2 class="d-flex justify-content-center p-3 category-show ">All Reviews</h2>
+      <div class="col-12 col-lg-6">
+        <% if @celebrity.reviews.empty? %>
+          <h2 class="category-show"> No Reviews</h2>
+        <% else %>
+          <% @celebrity.reviews.each do |r| %>
+              <div class="card card-review p-3">
+                <div class="review-title">
+                  <div class="main-info">
+                    <p class="mb-0"><strong><%= r.user.first_name %></strong></p>
+                  </div>
+                  <div class="stars">
+                    <% r.rating.times do %>
+                      <%# iterate over times rating for fontawesome %>
+                      <i class="fa-solid fa-star"></i>
+                    <% end %>
+                  </div>
+                </div>
+                  <p class="mb-0 my-3"><%= r.content %></p>
+                  <div class="delete-box">
+                    <% if r.user == current_user %>
+                      <%= link_to "", review_path(r.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-trash-alt my-2 d-flex justify-content-end" %>
+                    <% end%>
+                  </div>
+              </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
+    <%# go through all instances of the celebrity bookings %>
+
+    <% @celebrity.bookings.all.find do |booking|  %>
+      <% if booking.user == current_user %>
+        <div class="col-12 col-lg-6 text-white">
+          <h2 class="reviews-title category-show text-white">Leave your review</h2>
+            <%= simple_form_for [@celebrity, @review] do |f| %>
+              <%= f.input :rating, collection: (1..5).to_a, label: "How was it with this celebrity?", input_html: {data: {controller: "star-rating"}} %>
+              <%= f.input :content, label: "Be honest, tell us everything!" %>
+              <%= f.submit "Send your review", class: "btn btn-flat mt-2" %>
+            <% end %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+</div>

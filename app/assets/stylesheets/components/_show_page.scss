@@ -2,6 +2,7 @@
   display: flex;
   gap: 8px;
   align-items: center;
+  height: 32px;
 }
 
 .celebrity-title {
@@ -18,8 +19,53 @@
 .grow {
   margin-bottom: 0;
   flex-grow: 1;
+  font-size: 32px;
 }
 
-.btn .btn-success {
-  width: 40px;
+.celeb-info {
+  font-size: 20px;
+}
+
+.btn-xl {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  width:50%;    //Specify your width here
+}
+
+.category-show {
+  margin-top: 0px;
+  margin-bottom: 12px;
+  color: $beige;
+  font-weight: 700;
+}
+
+hr {
+  color: $beige;
+}
+
+.card-review {
+  color: black;
+  border-radius: 5px;
+  background-color: $faded-black;
+  border-style: solid;
+  border-color: $beige;
+  color: white;
+  display: flex;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+}
+
+.review-title {
+  display: flex;
+  gap: 8px;
+}
+
+.fas {
+  color: white;
+  margin-bottom: 0;
+}
+
+.fas:hover {
+  color: rgb(255, 0, 0);
 }
