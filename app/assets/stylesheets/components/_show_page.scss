@@ -1,7 +1,7 @@
 img.celebrity-photo {
   width: 100%;
-  max-height: 500px;
-  height: 500px;
+  max-height: 600px;
+  height: 600px;
   object-fit: cover;
   object-position: top;
 }
@@ -50,6 +50,10 @@ img.celebrity-photo {
 
 hr {
   color: $beige;
+}
+
+.editing a {
+  color: white;
 }
 
 .card-review {
