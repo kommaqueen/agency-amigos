@@ -105,3 +105,18 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+
+.btn-flat {
+  color: $beige;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: $faded-black;
+  transition: background 0.3s ease;
+  border: $beige 1px solid;
+}
+
+.btn-flat:hover {
+  background: white;
+  color: $faded-black;
+  border: $beige 1px solid;
+}
