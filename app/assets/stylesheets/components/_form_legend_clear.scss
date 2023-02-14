@@ -8,3 +8,17 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+.secondary-buttons{
+  text-decoration: none;
+  color: white;
+
+}
+
+.secondary-buttons:hover {
+  color: $beige;
+}
+
+.form-actions {
+  margin-bottom: 12px;
+}
