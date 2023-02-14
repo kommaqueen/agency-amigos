@@ -12,7 +12,7 @@
         <div class="celeb-name">
           <h2 class="celebrity-title category-show text-white"><%= @celebrity.name %> </h2>
           <% unless @celebrity.avg_rating.nil? %>
-            <%= render "celebrity_rating"  %>
+            <%= render "celebrities/celebrity_rating"  %>
           <% end %>
         </div>
       </div>
@@ -40,9 +40,6 @@
           <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-flat mt-2 btn-xl" %>
         </div>
       </div>
-
-
-
       </div>
     </div>
   </div>
@@ -71,9 +68,11 @@
                   </div>
                 </div>
                   <p class="mb-0 my-3"><%= r.content %></p>
-                  <% if r.user == current_user %>
-                    <%= link_to "", review_path(r.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-trash-alt my-2 d-flex justify-content-end" %>
-                  <% end%>
+                  <div class="delete-box">
+                    <% if r.user == current_user %>
+                      <%= link_to "", review_path(r.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-trash-alt my-2 d-flex justify-content-end" %>
+                    <% end%>
+                  </div>
               </div>
           <% end %>
         <% end %>
@@ -87,8 +86,8 @@
         <div class="col-12 col-lg-6 text-white">
           <h2 class="reviews-title category-show text-white">Leave your review</h2>
             <%= simple_form_for [@celebrity, @review] do |f| %>
-              <%= f.input :content %>
               <%= f.input :rating, collection: (1..5).to_a, label: "How was it with this celebrity?", input_html: {data: {controller: "star-rating"}} %>
+              <%= f.input :content, label: "Be honest, tell us everything!" %>
               <%= f.submit "Send your review", class: "btn btn-flat mt-2" %>
             <% end %>
         </div>
@@ -96,5 +95,3 @@
     <% end %>
     </div>
 </div>
-
-  

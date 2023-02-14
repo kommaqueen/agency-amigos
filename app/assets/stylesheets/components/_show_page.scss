@@ -36,20 +36,20 @@
 .category-show {
   margin-top: 0px;
   margin-bottom: 12px;
-  color: #d2bea2;
+  color: $beige;
   font-weight: 700;
 }
 
 hr {
-  color: #d2bea2;
+  color: $beige;
 }
 
 .card-review {
   color: black;
   border-radius: 5px;
-  background-color: #2a2929;
+  background-color: $faded-black;
   border-style: solid;
-  border-color: #d2bea2;
+  border-color: $beige;
   color: white;
   display: flex;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
