@@ -3,11 +3,16 @@ class CelebritiesController < ApplicationController
   before_action :set_celebrity, only: [:show, :edit, :update, :destroy]
 
   def index
-    @celebrities = Celebrity.all
+    if params[:query].present?
+      @celebrities = Celebrity.search_by_name_and_category(params[:query])
+    else
+      @celebrities = Celebrity.all
+    end
   end
 
   def show
     @review = Review.new
+    @booking_user = find_booking_user(@celebrity)
   end
 
   def new
@@ -45,5 +50,13 @@ class CelebritiesController < ApplicationController
 
   def celebrity_params
     params.require(:celebrity).permit(:name, :category, :description, :daily_rate, photos: [])
+  end
+
+  def find_booking_user(celebrity)
+    celebrity.bookings.all.find do |booking|
+      if booking.user == current_user
+        booking.user
+      end
+    end
   end
 end

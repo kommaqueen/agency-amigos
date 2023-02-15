@@ -82,3 +82,5 @@ gem "faker"
 gem "cloudinary"
 
 gem "uri"
+
+gem "pg_search"
