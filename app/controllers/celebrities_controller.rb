@@ -13,6 +13,7 @@ class CelebritiesController < ApplicationController
   def show
     @review = Review.new
     @booking_user = find_booking_user(@celebrity)
+    @message = get_celeb_message(@celebrity)
   end
 
   def new
@@ -60,6 +61,21 @@ class CelebritiesController < ApplicationController
       if booking.user == current_user
         booking.user
       end
+    end
+  end
+
+  def get_celeb_message(celebrity)
+    case celebrity.category
+    when "film"
+      "Predatory film star"
+    when "music"
+      "Whiny musician"
+    when "sports"
+      "Overpaid athlete"
+    when "influencer"
+      "Privileged 'influencer'"
+    when "politician"
+      "Corrupt politican"
     end
   end
 end
