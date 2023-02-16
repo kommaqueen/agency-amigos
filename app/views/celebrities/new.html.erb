@@ -7,7 +7,9 @@
         <%= f.input :description %>
         <%= f.input :daily_rate %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.submit %>
+        <div class="submit-button text-center">
+      <%= f.submit class: "btn btn-flat mt-2 text-center" %>
+    </div>
       <% end %>
     </div>
   </h2>
