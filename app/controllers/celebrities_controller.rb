@@ -42,6 +42,9 @@ class CelebritiesController < ApplicationController
     redirect_to celebrities_path, status: :see_other
   end
 
+  def myaccount
+  end
+
   private
 
   def set_celebrity
