@@ -1,32 +1,38 @@
-<div class="container w-25">
-  <h2 class="text-center p-2 fw-bolder"> Sign up</h2>
+<div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+  <div class="container w-25">
+    <h2 class="text-center p-2 fw-bolder"> Sign up</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
-    <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), data: {turbo: false}) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :first_name,
-                  required: true %>
-      <%= f.input :last_name,
-                  required: true %>
-      <%= f.input :age,
-                  required: true %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn btn-flat mt-2" %>
-    </div>
-  <% end %>
-
+      <div class="form-inputs">
+        <%= f.input :email,
+                    label: false,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email", placeholder: "Email" } %>
+        <%= f.input :password,
+                    label: false,
+                    required: true,
+                    input_html: { autocomplete: "new-password", placeholder: "Password (minimum #{@minimum_password_length} characters)" } %>
+        <%= f.input :password_confirmation,
+                    label: false,
+                    required: true,
+                    input_html: { autocomplete: "new-password", placeholder: "Confirm Password" } %>
+        <%= f.input :first_name,
+                    label: false,
+                    required: true,
+                    input_html: { placeholder: "First Name" } %>
+        <%= f.input :last_name,
+                    label: false,
+                    required: true,
+                    input_html: { placeholder: "Last Name" } %>
+        <%= f.input :age,
+                    label: false,
+                    required: true,
+                    input_html: { placeholder: "Age" } %>
+        <%= f.button :submit, "Sign up", class: "btn btn-flat mt-2 d-block mx-auto" %>
+      </div>
+    <% end %>
+  </div>
 </div>
