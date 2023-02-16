@@ -12,9 +12,9 @@
   grid-gap: 14px;
 }
 
-.card-collections:last-of-type {
-  margin-bottom: 100px;
-}
+// .card-collections:last-of-type {
+//   margin-bottom: 100px;
+// }
 
 .category-header {
   margin-top: 40px;
@@ -25,7 +25,6 @@
 
 .card-category {
   position: relative;
-  // padding: 1em 0;
   padding: 1.5rem clamp(1rem, 5%, 3rem);
   background-size: cover;
   flex-direction: column;
