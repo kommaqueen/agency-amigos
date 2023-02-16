@@ -1,25 +1,31 @@
 
 <div class="container">
-  <h1>Hello, <%= current_user.first_name.capitalize %> </h1>
-  <div class="row">
+  <h1 class="p-3">Hello, <%= current_user.first_name.capitalize %> </h1>
+  <div class="row justify-content-center">
     <h2 class="text-center fw-bolder pb-5">My Bookings</h2>
-    <% current_user.bookings.each do |booking| %>
-    <div class="col-12 col-lg-3">
-      <div class="card card-review p-3">
-        <div class="booking-title">
-          <p class="fw-bolder"><%= booking.celebrity.name %></p>
-        </div>
-        <div class="booking-dates">
-          <p>Starts on: <%= booking.starts_on %></p>
-          <p>Ends on: <%= booking.ends_on %></p>
+    <% if current_user.bookings.empty? %>
+      <%= link_to "Go book a celebrity!", celebrities_path, class: "btn btn-flat mt-2 w-50" %>
+    <% else %>
+      <% current_user.bookings.each do |booking| %>
+      <div class="col-12 col-lg-3">
+        <div class="card card-review p-3">
+          <div class="booking-title pb-3">
+            <%= link_to booking.celebrity.name, celebrity_path(booking.celebrity.id), class: 'stretched-link fw-bolder text-white' %>
+          </div>
+          <div class="booking-dates">
+            <p>Starts on: <%= booking.starts_on %></p>
+            <p>Ends on: <%= booking.ends_on %></p>
+          </div>
         </div>
       </div>
-    </div>
+      <% end %>
+
+
     <% end %>
   </div>
 
   <div class="row">
-    <h2 class="fw-bolder text-center p-5">My celebrities</h2>
+    <h2 class="fw-bolder text-center p-5">My Celebrities</h2>
       <% current_user.celebrities.each do |celeb| %>
       <div class="col-12 col-lg-4 p-3 g-2">
         <div class="card card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path celeb.photos.first.key, height: 300, crop: :fill %>')">
@@ -33,21 +39,25 @@
 
   <div class="row justify-content-md-center">
     <h2 class="fw-bolder text-center p-5">My last review </h2>
-    <div class="col-12 col-lg-6 ">
-      <div class="card card-review">
-        <div class="card-review-top p-3 d-flex justify-content-start">
-          <p class="fw-bolder me-1 mb-0"><%= current_user.reviews.last.celebrity.name %></p>
-          <p class="fw-bolder me-1 mb-0"> - <%= current_user.reviews.last.rating %></p>
-          <i class="fas fa-star"></i>
-        </div>
-        <div class="card-review-content p-3">
-          <p class="mb-3"><%= current_user.reviews.last.content %></p>
-          <p class="mb-0"><%= current_user.reviews.last.created_at %></p>
+    <% if current_user.reviews.empty? %>
+      <h2 class="text-center">No reviews, go rent someone!</h2>
+      <% else %>
+      <div class="col-12 col-lg-6 ">
+        <div class="card card-review">
+          <div class="card-review-top p-3 d-flex justify-content-start">
+            <p class="fw-bolder me-1 mb-0"><%= current_user.reviews.last.celebrity.name %></p>
+            <p class="fw-bolder me-1 mb-0"> - <%= current_user.reviews.last.rating %></p>
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="card-review-content p-3">
+            <p class="mb-3"><%= current_user.reviews.last.content %></p>
+            <p class="mb-0"><%= current_user.reviews.last.created_at %></p>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
-  
+
 
 </div>
