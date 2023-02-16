@@ -185,7 +185,7 @@ paris.save!
 
 mo = Celebrity.new(
   name: "Mo Farah",
-  category: "sport",
+  category: "sports",
   daily_rate: 90,
   description: "Sir Mohamed Muktar Jama Farah is a British long-distance runner. His 10 global championship gold medals (4 Olympic and 6 World titles) make him the most successful male track distance runner ever, and he is the most successful British track athlete in modern Olympic Games history."
 )
@@ -224,7 +224,7 @@ john.save!
 
 roger = Celebrity.new(
   name: "Roger Federer",
-  category: "sport",
+  category: "sports",
   daily_rate: 75,
   description: "Widely recognized as the GOAT. Roger Federer has won 20 grand slam titles and changed the way the game was played. Having recently retired, Roger has decided to rent himself out on our platform as now he has so much time on his hands."
 )

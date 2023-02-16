@@ -4,12 +4,12 @@
     <h2>Thanks for confirming your booking with </h2>
     <h1 class="fw-bolder"><%= @booking.celebrity.name %></h1>
   </div>
-  <div class="row avatar-celebrity">
-    <%= cl_image_tag @booking.celebrity.photos.first.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "rounded-circle " %>
+  <div class="row avatar-box">
+    <%= cl_image_tag @booking.celebrity.photos.first.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "rounded-circle avatar-celebrity" %>
   </div>
   <div class="row text-center p-3">
-    <h2>You are about to receive a call in a few seconds... </h2>
-    <i style="font-size: 120px" class="fas fa-mobile-alt p-3"></i>
+    <h2>You will receive a personal call in a few seconds... </h2>
+    <i class="fas fa-mobile-alt p-3 calling"></i>
     <%= link_to "View #{@booking.celebrity.name}'s Profile", celebrity_path(@booking.celebrity), class:"secondary-buttons" %>
   </div>
 </div>

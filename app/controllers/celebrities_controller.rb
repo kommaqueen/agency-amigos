@@ -23,8 +23,10 @@ class CelebritiesController < ApplicationController
     @celebrity = Celebrity.new(celebrity_params)
     @celebrity.user = current_user
     if @celebrity.save!
+      raise
       redirect_to celebrity_path(@celebrity)
     else
+      raise
       render :new, status: :unprocessable_entity
     end
   end
