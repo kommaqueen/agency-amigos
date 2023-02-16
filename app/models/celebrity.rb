@@ -4,14 +4,21 @@ class Celebrity < ApplicationRecord
   has_many_attached :photos
   has_many :reviews, dependent: :destroy
 
-  validates :name, uniqueness: true, presence: true
   # must add add celebrity user story validations
+  validates :name, uniqueness: true, presence: true
+  validates :category, presence: true, inclusion: { in: %w(sports film influencer politics music),
+    message: "%{value} is not a valid category" }
+  validates :description, presence: true, length: { in: 6..50 }
+  validates :daily_rate, presence: true, numericality: { only_integer: true, greater_than: 1 }
+
+  # pg search
   include PgSearch::Model
   pg_search_scope :search_by_name_and_category,
   against: [ :name, :category ],
   using: {
     tsearch: { prefix: true } # <-- now `superman batm` will return something!
   }
+
   # avg rating for their star display
   def avg_rating
     # map puts all ratings into an array
