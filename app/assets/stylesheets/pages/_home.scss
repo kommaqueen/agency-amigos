@@ -4,6 +4,18 @@
   color: black;
 }
 
+.stretched-link:hover {
+  color: white;
+}
+
+.alternate:nth-of-type(2) > .card > .card-body {
+  background-color: $beige;
+}
+
+.card-body {
+  background-color: #dcc1ff;
+}
+
 .subtitle-rate {
   display: flex;
   justify-content: space-between;
