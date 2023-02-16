@@ -5,4 +5,7 @@ class PagesController < ApplicationController
       @celebrities = Celebrity.all
   end
 
+  def myaccount
+  end
+
 end
