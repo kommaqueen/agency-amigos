@@ -31,7 +31,7 @@
           <div class="blur"></div>
           <div class="ribbon beige">$<%= celebrity.daily_rate %>/day</div>
           <div class="card-top">
-            <%= link_to celebrity.name, celebrity_path(celebrity) %>
+            <%= link_to celebrity.name, celebrity_path(celebrity), class: 'stretched-link' %>
           </div>
           <div class="card-bottom">
             <% unless celebrity.avg_rating.nil? %>
