@@ -8,7 +8,7 @@ class Celebrity < ApplicationRecord
   validates :name, uniqueness: true, presence: true
   validates :category, presence: true, inclusion: { in: %w(sports film influencer politics music),
     message: "%{value} is not a valid category" }
-  validates :description, presence: true, length: { in: 6..50 }
+  validates :description, presence: true, length: { in: 6..200 }
   validates :daily_rate, presence: true, numericality: { only_integer: true, greater_than: 1 }
 
   # pg search
