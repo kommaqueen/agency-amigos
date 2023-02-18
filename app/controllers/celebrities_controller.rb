@@ -15,7 +15,7 @@ class CelebritiesController < ApplicationController
     @booking_user = find_booking_user(@celebrity)
     @message = get_celeb_message(@celebrity)
     # ask why this booking_possible thing is returning true
-    @booking_possible = can_book_celebrity?(current_user, @celebrity)
+    # @booking_possible = can_book_celebrity?(current_user, @celebrity)
   end
 
   def new
@@ -81,11 +81,11 @@ class CelebritiesController < ApplicationController
     end
   end
 
-  def can_book_celebrity?(user, celebrity)
-    if user.age <= 21 && celebrity.name == "Leonardo Dicaprio"
-      return false
-    else
-      return true
-    end
-  end
+  # def can_book_celebrity?(user, celebrity)
+  #   if user.age <= 21 && celebrity.name == "Leonardo Dicaprio"
+  #     return false
+  #   else
+  #     return true
+  #   end
+  # end
 end
