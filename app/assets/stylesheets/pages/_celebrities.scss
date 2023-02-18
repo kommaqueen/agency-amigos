@@ -10,10 +10,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 14px;
+  row-gap: 32px;
 }
 
 .card-collections:last-of-type {
- margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 .category-header {
@@ -49,7 +50,6 @@
   // position: absolute;}
 
 .card-collection {
-  margin: 4em 0;
 }
 
 
