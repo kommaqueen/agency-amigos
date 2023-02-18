@@ -55,8 +55,8 @@
     <h2 class="d-flex justify-content-center p-3 category-show mb-4">All Reviews</h2>
       <%# ampersand says if its there, do this %>
       <% unless @booking_user&.user == current_user  %>
-        <h4 class="category-show text-center text-white"> Book this celeb to leave a review!</h4>
-      <% else %>
+        <h4 class="category-show text-center text-white pb-4"> Book this celeb to leave a review!</h4>
+      <% end %>
       <div class="order-1 col-12 col-lg-6">
           <% @celebrity.reviews.each do |r| %>
             <div class="card card-review p-3">
@@ -79,7 +79,6 @@
                 </div>
             </div>
           <% end %>
-        <% end %>
       </div>
 
     <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
