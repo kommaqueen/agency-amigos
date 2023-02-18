@@ -33,7 +33,7 @@
               <div class="celeb-pricing">
                 <p class="grow"><strong><%= @celebrity.daily_rate %></strong> EUR</p>
                 <br>
-                <% if current_user.age > 25 && @celebrity.name == "Leonardo DiCaprio" %>
+                <% if current_user && current_user.age > 25 && @celebrity.name == "Leonardo DiCaprio" %>
                   <button class="btn btn-flat mt-2 btn-xl">Sorry, you're too old for Leo!</button>
                 <% else %>
                   <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-flat mt-2 btn-xl" %>

@@ -12,6 +12,10 @@
   grid-gap: 14px;
 }
 
+.card-collections:last-of-type {
+ margin-bottom: 100px;
+}
+
 .category-header {
   margin-top: 40px;
   margin-bottom: 12px;
@@ -38,15 +42,15 @@
   background-size: cover;
 }
 
-.card-category .blur {
-  backdrop-filter: blur(2px);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
+// .card-category .blur {
+  // backdrop-filter: blur(2px);
+  // height: 100%;
+  // width: 100%;
+  // position: absolute;}
 
 .card-collection {
 }
+
 
 .card-top {
   flex-grow: 1;
@@ -62,8 +66,8 @@
 .card-top a {
   text-decoration: none;
   color: white;
-  font-size: 36px;
-  font-weight: 500;
+  font-size: 33px;
+  font-weight: 550;
 }
 
 .card-bottom p {
