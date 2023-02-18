@@ -34,4 +34,19 @@ class Celebrity < ApplicationRecord
 
     !conflicts
   end
+
+  def self.get_celeb_message(celebrity)
+    case celebrity.category
+    when "film"
+      "Predatory Film Star"
+    when "music"
+      "Whiny Musician"
+    when "sports"
+      "Overpaid Athlete"
+    when "influencer"
+      "Privileged 'Influencer'"
+    when "politician"
+      "Corrupt Politican"
+    end
+  end
 end
