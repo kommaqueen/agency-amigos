@@ -3,8 +3,8 @@
 <div class="container w-25">
   <h2 class="text-center p-2 fw-bolder">Book <%= @celebrity.name %></h2>
   <%= simple_form_for [@celebrity, @booking] do |f| %>
-    <%= f.input :starts_on, as: :date, html5: true, start_year: Date.today.year, order: [:month, :day, :year], start_month: Date.today.month, end_year: Date.today.year + 2 %>
-    <%= f.input :ends_on, as: :date, html5: true,  order: [:month, :day, :year], start_year: Date.today.year, end_year: Date.today.year + 2 %>
+    <%= f.input :starts_on, as: :date, html5: true, input_html: { onfocus: "this.showPicker()" }, start_year: Date.today.year, order: [:month, :day, :year], start_month: Date.today.month, end_year: Date.today.year + 2 %>
+    <%= f.input :ends_on, as: :date, html5: true,  input_html: { onfocus: "this.showPicker()" }, order: [:month, :day, :year], start_year: Date.today.year, end_year: Date.today.year + 2 %>
     <div class="submit-button text-center">
       <%= f.submit class: "btn btn-flat mt-2 text-center fw-bolder" %>
     </div>
