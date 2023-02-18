@@ -66,6 +66,7 @@ class CelebritiesController < ApplicationController
     end
   end
 
+
   # def can_book_celebrity?(user, celebrity)
   #   if user.age <= 21 && celebrity.name == "Leonardo Dicaprio"
   #     return false
