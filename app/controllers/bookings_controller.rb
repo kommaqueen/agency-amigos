@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_celebrity
+  before_action :set_celebrity, only: [:create, :new, :show]
 
   def new
     @booking = Booking.new
@@ -15,6 +15,12 @@ class BookingsController < ApplicationController
     else
       render 'celebrities/show', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to myaccount_path, status: :see_other
   end
 
   def show
