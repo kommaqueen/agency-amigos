@@ -2,7 +2,7 @@
   <% @celebrities.sample(3).each do |celebrity| %>
     <div class="alternate col-xl-4 col-md-6 mb-4 mt-1">
       <div class="card" style="width: 400;">
-        <%= cl_image_tag celebrity.photos.first.key, class: 'card-img-top', alt: 'Leonardo Dicaprio' %>
+        <%= cl_image_tag celebrity.photos.first.key, class: 'card-img-top', alt: 'celebrity image' %>
         <div class="card-body">
           <h5 class="card-title"><%= link_to celebrity.name, celebrity_path(celebrity), class: 'stretched-link' %></h5>
             <div class="subtitle-rate">
