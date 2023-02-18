@@ -9,9 +9,11 @@
 
 .navbar-lewagon .navbar-brand {
   width: 40px;
-  font-family: 'Oleo Script', cursive;
+  font-family: $logo-font;
+  // font-family: 'Oleo Script', cursive;
   color: white;
   letter-spacing: 1.2px;
+  padding-left: 1em;
 }
 
 .dropdown-toggle::after {
