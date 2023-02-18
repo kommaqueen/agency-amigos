@@ -159,8 +159,8 @@ leo = Celebrity.new(
   daily_rate: 125,
   description: "Leonardo DiCaprio is an award-winning American actor and film producer. If you are a model under the age of 25, Leo would love to meet you!"
 )
-file = URI.open("https://res.cloudinary.com/dui6ekrvn/image/upload/v1676129266/celebrities/Leonardo_Dicaprio_hr1dwp.jpg")
-leo.photos.attach(io: file, filename: "Leonardo_Dicaprio_hr1dwp.jpg", content_type: "image/jpg")
+file = URI.open("https://res.cloudinary.com/dui6ekrvn/image/upload/v1676730572/celebrities/leonardocrap_wzwsqv.jpg")
+leo.photos.attach(io: file, filename: "leonardocrap_wzwsqv.jpg", content_type: "image/jpg")
 leo.user = user3
 leo.save!
 
