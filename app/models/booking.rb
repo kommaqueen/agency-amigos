@@ -2,10 +2,9 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :celebrity
 
-  validates :starts_on, :ends_on, presence: true
-
   # must add validation for start and ends dates
-  # make sure chosen dates are not taken by other booking
+  validates :starts_on, :ends_on, presence: true
+  # validates :starts_on, uniqueness: {scope: :celebrity_id}
 
-  # maybe validates uniqueness of, scope: thing
+  # make sure chosen dates are not taken by other booking
 end
