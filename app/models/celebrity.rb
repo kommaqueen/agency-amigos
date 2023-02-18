@@ -36,7 +36,7 @@ class Celebrity < ApplicationRecord
       "Overpaid Athlete"
     when "influencer"
       "Privileged 'Influencer'"
-    when "politician"
+    when "politics"
       "Corrupt Politican"
     end
   end
