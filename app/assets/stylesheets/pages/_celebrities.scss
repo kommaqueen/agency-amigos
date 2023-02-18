@@ -12,9 +12,9 @@
   grid-gap: 14px;
 }
 
-// .card-collections:last-of-type {
-//   margin-bottom: 100px;
-// }
+.card-collections:last-of-type {
+ margin-bottom: 100px;
+}
 
 .category-header {
   margin-top: 40px;
@@ -42,16 +42,16 @@
   background-size: cover;
 }
 
-.card-category .blur {
-  backdrop-filter: blur(2px);
-  height: 100%;
-  width: 100%;
-  position: absolute;
-}
+// .card-category .blur {
+  // backdrop-filter: blur(2px);
+  // height: 100%;
+  // width: 100%;
+  // position: absolute;}
 
 .card-collection {
   margin: 4em 0;
 }
+
 
 .card-top {
   flex-grow: 1;
