@@ -10,11 +10,12 @@
       <div class="col-12 col-lg-3">
         <div class="card card-review p-3">
           <div class="booking-title pb-3">
-            <%= link_to booking.celebrity.name, celebrity_path(booking.celebrity.id), class: 'stretched-link fw-bolder text-white' %>
+            <%= link_to booking.celebrity.name, celebrity_path(booking.celebrity.id), class: ' fw-bolder text-white' %>
           </div>
           <div class="booking-dates">
             <p>Starts on: <%= booking.starts_on.strftime('%b/%d/%Y') %></p>
             <p>Ends on: <%= booking.ends_on.strftime('%b/%d/%Y') %></p>
+            <%= link_to "", booking_path(booking), class: "fas fa-trash-alt", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
         </div>
       </div>
