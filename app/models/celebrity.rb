@@ -26,6 +26,7 @@ class Celebrity < ApplicationRecord
     (avg * 2).round / 2.0 unless avg.nan?
   end
 
+<<<<<<< HEAD
   # booking conflict
   # def booking_conflict?(start_date, end_date)
   #   conflicts = bookings.any? do |booking|
@@ -34,4 +35,6 @@ class Celebrity < ApplicationRecord
 
   #   !conflicts
   # end
+=======
+>>>>>>> b3777ad52964e0e27158d71c26c900fd497ad333
 end

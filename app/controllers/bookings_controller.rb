@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
     @booking.celebrity = @celebrity
     @booking.user = current_user
     # ask about where to put this method from Model
-    # current_user.booking_conflict?
     if @booking.save!
       redirect_to celebrity_booking_path(@celebrity, @booking)
     else

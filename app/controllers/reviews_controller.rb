@@ -6,6 +6,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user = current_user
     @review.celebrity = @celebrity
+    @message = Celebrity.get_celeb_message(@celebrity)
     if @review.save
       redirect_to celebrity_reviews_path
     else
@@ -14,15 +15,16 @@ class ReviewsController < ApplicationController
     end
   end
 
-
-
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to celebrity_path, status: :see_other
+    @celebrity = Celebrity.find(params[:celebrity_id])
+    redirect_to celebrity_path(@celebrity), status: :see_other
   end
 
   private
+
+
 
   def set_celebrity
     @celebrity = Celebrity.find(params[:celebrity_id])
@@ -31,5 +33,4 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:content, :rating, :celebrity_id)
   end
-
 end

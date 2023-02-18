@@ -13,7 +13,7 @@ class CelebritiesController < ApplicationController
   def show
     @review = Review.new
     @booking_user = find_booking_user(@celebrity)
-    @message = get_celeb_message(@celebrity)
+    @message = Celebrity.get_celeb_message(@celebrity)
     # ask why this booking_possible thing is returning true
     # @booking_possible = can_book_celebrity?(current_user, @celebrity)
   end
@@ -66,26 +66,11 @@ class CelebritiesController < ApplicationController
     end
   end
 
-  def get_celeb_message(celebrity)
-    case celebrity.category
-    when "film"
-      "Predatory Film Star"
-    when "music"
-      "Whiny Musician"
-    when "sports"
-      "Overpaid Athlete"
-    when "influencer"
-      "Privileged 'Influencer'"
-    when "politician"
-      "Corrupt Politican"
-    end
-  end
-
-  def can_book_celebrity?(user, celebrity)
-    if user.age <= 21 && celebrity.name == "Leonardo Dicaprio"
-      return false
-    else
-      return true
-    end
-  end
+  # def can_book_celebrity?(user, celebrity)
+  #   if user.age <= 21 && celebrity.name == "Leonardo Dicaprio"
+  #     return false
+  #   else
+  #     return true
+  #   end
+  # end
 end
