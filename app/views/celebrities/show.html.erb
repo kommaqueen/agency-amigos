@@ -1,99 +1,101 @@
-
-  <div class="container p-3">
-    <div class="row">
-      <div class="col-12 col-lg-6 d-flex justify-content-start">
-        <% @celebrity.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, class: "celebrity-photo" %>
-        <% end %>
-      </div>
-      <div class="col-6 p-3 card-celeb rounded-4 text-white ">
-        <div class="row d-flex justify-content-start p-3 ">
-          <div class="celeb-name">
-            <h2 class="celebrity-title category-show text-white"><%= @celebrity.name %> </h2>
-            <% unless @celebrity.avg_rating.nil? %>
-              <%= render "celebrities/celebrity_rating"  %>
-            <% end %>
-          </div>
-          <div class="row d-flex p-3 ">
-            <div class="celeb-info">
-              <p>
-                <strong><%= @message %></strong>
-                <br>
-                <%= @celebrity.description %>
-              </p>
-            <div class="row p-3">
-              <div class="editing">
-                <% if @celebrity.user == current_user %>
-                  <%= link_to "", edit_celebrity_path, class:"far fa-edit" %>
-                  <%= link_to "", celebrity_path(@celebrity), class: "fas fa-trash-alt", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-                <% end%>
-              </div>
-            </div>
-            <div class="row p-3">
-              <div class="celeb-pricing">
-                <p class="grow"><strong><%= @celebrity.daily_rate %></strong> EUR</p>
-                <br>
-                <% if current_user && current_user.age > 25 && @celebrity.name == "Leonardo DiCaprio" %>
-                  <button class="btn btn-flat mt-2 btn-xl">Sorry, you're too old for Leo!</button>
-                <% else %>
-                  <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-flat mt-2 btn-xl" %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr class="container">
-
-  <div class="container my-3">
-    <div class="row">
-      <h2 class="d-flex justify-content-center p-3 category-show ">All Reviews</h2>
-        <%# ampersand says if its there, do this %>
-        <% unless @booking_user&.user == current_user  %>
-          <h4 class="category-show text-center"> Book this celeb to leave a review!</h4>
-        <% else %>
-        <div class="order-1 col-12 col-lg-6">
-            <% @celebrity.reviews.each do |r| %>
-              <div class="card card-review p-3">
-                <div class="review-title">
-                  <div class="main-info">
-                    <p class="mb-0"><strong><%= r.user.first_name %></strong></p>
-                  </div>
-                  <div class="stars">
-                    <% r.rating.times do %>
-                      <%# iterate over times rating for fontawesome %>
-                      <i class="fa-solid fa-star"></i>
-                    <% end %>
-                  </div>
-                </div>
-                  <p class="mb-0 my-3"><%= r.content %></p>
-                  <div class="delete-box">
-                    <% if r.user == current_user %>
-                      <%= link_to "", review_path(r.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-trash-alt my-2 d-flex justify-content-end" %>
-                    <% end%>
-                  </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-
-      <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
-      <%# go through all instances of the celebrity bookings %>
-
-      <% @celebrity.bookings.all.find do |booking|  %>
-        <% if booking.user == current_user %>
-          <div class="col-12 col-lg-6 text-white">
-            <h2 class="reviews-title category-show text-white">Leave your review</h2>
-              <%= simple_form_for [@celebrity, @review] do |f| %>
-                <%= f.input :rating, collection: (1..5).to_a, label: "How was it with this celebrity?", input_html: {data: {controller: "star-rating"}} %>
-                <%= f.input :content, label: "Be honest, tell us everything!" %>
-                <%= f.submit "Send your review", class: "btn btn-flat mt-2" %>
-              <% end %>
-          </div>
-        <% end %>
+<div class="container p-3 celeb-show-card">
+  <div class="row">
+    <div class="col-12 col-lg-6 d-flex justify-content-start">
+      <% @celebrity.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class: "celebrity-photo" %>
       <% end %>
     </div>
+    <div class="col-6 p-3 card-celeb rounded-4 text-white ">
+      <div class="row d-flex justify-content-start p-3 ">
+        <div class="celeb-name">
+          <div class="name-box">
+            <h2 class="celebrity-title category-show"><%= @celebrity.name %> </h2>
+            <% if @celebrity.user == current_user %>
+              <div class="editing">
+                <%= link_to "", edit_celebrity_path, class:"far fa-edit" %>
+                <%= link_to "", celebrity_path(@celebrity), class: "fas fa-trash-alt", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+              </div>
+            <% end%>
+          </div>
+          <% unless @celebrity.avg_rating.nil? %>
+          <div class="stars">
+            <%= render "celebrities/celebrity_rating"  %>
+          </div>
+          <% end %>
+        </div>
+        <div class="row d-flex p-3 ">
+          <div class="celeb-info">
+            <p>
+              <strong><%= @message %></strong>
+              <br>
+              <%= @celebrity.description %>
+            </p>
+          <div class="row">
+            <div class="celeb-pricing">
+              <p class="grow"><strong><%= @celebrity.daily_rate %></strong> EUR</p>
+              <br>
+              <% if current_user && current_user.age > 25 && @celebrity.name == "Leonardo DiCaprio" %>
+                <button class="btn btn-flat mt-2 btn-xl">Sorry, you're too old for Leo!</button>
+              <% else %>
+                <%= link_to "Book Now", new_celebrity_booking_path(@celebrity), class: "btn btn-flat mt-2 btn-xl" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
+</div>
+
+<hr class="container">
+
+<div class="container my-3">
+  <div class="row">
+    <h2 class="d-flex justify-content-center p-3 category-show mb-4">All Reviews</h2>
+      <%# ampersand says if its there, do this %>
+      <% unless @booking_user&.user == current_user  %>
+        <h4 class="category-show text-center text-white"> Book this celeb to leave a review!</h4>
+      <% else %>
+      <div class="order-1 col-12 col-lg-6">
+          <% @celebrity.reviews.each do |r| %>
+            <div class="card card-review p-3">
+              <div class="review-title">
+                <div class="main-info">
+                  <p class="mb-0"><strong><%= r.user.first_name %></strong></p>
+                </div>
+                <div class="stars">
+                  <% r.rating.times do %>
+                    <%# iterate over times rating for fontawesome %>
+                    <i class="fa-solid fa-star"></i>
+                  <% end %>
+                </div>
+              </div>
+                <p class="mb-0 my-3"><%= r.content %></p>
+                <div class="delete-box">
+                  <% if r.user == current_user %>
+                    <%= link_to "", review_path(r.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fas fa-trash-alt my-2 d-flex justify-content-end" %>
+                  <% end%>
+                </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    <%# add logic that if the current_user has a booking with this celebrity, then they can leave a review %>
+    <%# go through all instances of the celebrity bookings %>
+
+    <% @celebrity.bookings.all.find do |booking|  %>
+      <% if booking.user == current_user %>
+        <div class="col-12 col-lg-6 text-white">
+          <h2 class="reviews-title category-show text-white">Leave your review</h2>
+            <%= simple_form_for [@celebrity, @review] do |f| %>
+              <%= f.input :rating, collection: (1..5).to_a, label: "How was it with this celebrity?", input_html: {data: {controller: "star-rating"}} %>
+              <%= f.input :content, label: "Be honest, tell us everything!" %>
+              <%= f.submit "Send your review", class: "btn btn-flat mt-2" %>
+            <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

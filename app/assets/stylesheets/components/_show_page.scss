@@ -1,9 +1,10 @@
 img.celebrity-photo {
-  width: 100%;
+  width: 80%;
   max-height: 600px;
   height: 600px;
   object-fit: cover;
   object-position: top;
+  border-radius: 50%;
 }
 
 .celeb-name {
@@ -11,11 +12,19 @@ img.celebrity-photo {
   gap: 8px;
   align-items: center;
   height: 32px;
+  justify-content: space-between;
+}
+
+.name-box {
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
 }
 
 .celebrity-title {
   margin-bottom: 0;
   flex-grow: 1;
+  color: $lilac;
 }
 
 .celeb-pricing {
@@ -28,6 +37,10 @@ img.celebrity-photo {
   margin-bottom: 0;
   flex-grow: 1;
   font-size: 32px;
+}
+
+.stars > i {
+  color: gold;
 }
 
 .celeb-info {
