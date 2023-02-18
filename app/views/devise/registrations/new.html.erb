@@ -7,30 +7,30 @@
 
       <div class="form-inputs">
         <%= f.input :email,
-                    label: false,
+                    label: 'Email',
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email", placeholder: "Email" } %>
+                    input_html: { autocomplete: "email"} %>
         <%= f.input :password,
-                    label: false,
+                    label: 'Password',
                     required: true,
-                    input_html: { autocomplete: "new-password", placeholder: "Password (minimum #{@minimum_password_length} characters)" } %>
+                    input_html: { autocomplete: "new-password", placeholder: "(minimum #{@minimum_password_length} characters)" } %>
         <%= f.input :password_confirmation,
-                    label: false,
+                    label: 'Confirm password',
                     required: true,
-                    input_html: { autocomplete: "new-password", placeholder: "Confirm Password" } %>
+                    input_html: { autocomplete: "new-password"} %>
         <%= f.input :first_name,
-                    label: false,
+                    label: 'First name',
                     required: true,
-                    input_html: { placeholder: "First Name" } %>
+                    input_html: { autocomplete: "First name"} %>
         <%= f.input :last_name,
-                    label: false,
+                    label: 'Last Name',
                     required: true,
-                    input_html: { placeholder: "Last Name" } %>
+                    input_html: { autocomplete: "Last name"} %>
         <%= f.input :age,
-                    label: false,
+                    label: 'Age',
                     required: true,
-                    input_html: { placeholder: "Age" } %>
+                    input_html: { autocomplete: "Age"} %>
         <%= f.button :submit, "Sign up", class: "btn btn-flat mt-2 d-block mx-auto" %>
       </div>
     <% end %>
