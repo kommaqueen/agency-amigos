@@ -27,11 +27,11 @@ class Celebrity < ApplicationRecord
   end
 
   # booking conflict
-  def booking_conflict?(start_date, end_date)
-    conflicts = bookings.any? do |booking|
-      (start_date - booking.ends_on) * (booking.starts_on - end_date) >= 0
-    end
+  # def booking_conflict?(start_date, end_date)
+  #   conflicts = bookings.any? do |booking|
+  #     (start_date - booking.ends_on) * (booking.starts_on - end_date) >= 0
+  #   end
 
-    !conflicts
-  end
+  #   !conflicts
+  # end
 end

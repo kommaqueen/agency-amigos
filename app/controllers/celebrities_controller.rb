@@ -15,7 +15,7 @@ class CelebritiesController < ApplicationController
     @booking_user = find_booking_user(@celebrity)
     @message = get_celeb_message(@celebrity)
     # ask why this booking_possible thing is returning true
-    @booking_possible = can_book_celebrity?(current_user, @celebrity)
+    # @booking_possible = can_book_celebrity?(current_user, @celebrity)
   end
 
   def new
