@@ -13,8 +13,8 @@
             <%= link_to booking.celebrity.name, celebrity_path(booking.celebrity.id), class: 'stretched-link fw-bolder text-white' %>
           </div>
           <div class="booking-dates">
-            <p>Starts on: <%= booking.starts_on %></p>
-            <p>Ends on: <%= booking.ends_on %></p>
+            <p>Starts on: <%= booking.starts_on.strftime('%b/%d/%Y') %></p>
+            <p>Ends on: <%= booking.ends_on.strftime('%b/%d/%Y') %></p>
           </div>
         </div>
       </div>
